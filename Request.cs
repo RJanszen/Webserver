@@ -2,13 +2,14 @@
 {
     public class Request
     {
-
+        // Request parameter definitions
         public string Type { get; set; }
         public string URL { get; set; }
         public string Host { get; set; }
         public string Referer { get; set; }
         private static int counter = 0;
 
+        // Request constructor
         private Request(string type, string url, string host, string referer)
         {
             Type = type;
@@ -18,6 +19,7 @@
             toFile();
         }
 
+        // Log each request to "test.txt"
         private void toFile()
         {
             // Compose a string that consists of three lines.
@@ -31,6 +33,7 @@
             file.Close();
         }
 
+        // Extract headers 'type', 'url', 'host', and 'referer' from the request, and set those parameters
         public static Request GetRequest(string request)
         {
             if (string.IsNullOrEmpty(request))
